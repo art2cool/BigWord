@@ -18,7 +18,12 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'pages/user.html',
 		controller: 'mainController'
 	})
-	.when('/edit', {
+	.when('/view/:word', {
+
+		templateUrl: 'pages/view.html',
+		controller: 'viewController'
+	})
+	.when('/edit/', {
 
 		templateUrl: 'pages/edit.html',
 		controller: 'addNew'
@@ -29,13 +34,8 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 
 MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
 	$scope.names = ["Volodya", "Nazar", "Ira", "Dominick", "Veronica"];
+	
 	$scope.name = $routeParams.name;
-	$scope.words = [{
-		word: 'girl',
-		translate: 'Дівчина',
-		image: 'http://attractwomenreport.com/wp-content/uploads/2013/11/Girl-Reading-Book.jpg',
-		example: 'Girl listening to music.'
-	}];
 
 		$http.get('/vocabulary')
 			.success(function(data) {
@@ -47,9 +47,27 @@ MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function 
 			.error(function(data, status) {
 				console.log(data);
 			})
+
+	$scope.wordDelete = function() {
+		console.log('deleted');
+
+	}		
+
 }]);
 
-MyApp.controller('addNew', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+MyApp.controller('addNew', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
+
+$scope.clean = function (message) {
+	
+	$scope.message = message;
+	$timeout(function() {
+
+		$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
+		$scope.message = '';	
+	}, 2000)
+	
+}
+
 
 $scope.NewWord = function(){
 
@@ -62,10 +80,7 @@ $scope.NewWord = function(){
 
 	$http.post('/new', word)
 		.success(function (data) {
-			$scope.word = '';
-			 $scope.translate ='';
-			  $scope.image='';
-			   $scope.example='';
+			$scope.clean('Added in vocabulary');
 		console.log(data);
 		})
 		.error(function(data, status) {
@@ -74,5 +89,34 @@ $scope.NewWord = function(){
 		})
 
 	}
+	
+}]);
+
+MyApp.directive('searchResult', function(){
+	// Runs during compile
+	return {
+		restrict: 'AE',
+		templateUrl: 'directives/searchresult.html',
+		replace: true
+	};
+});
+
+MyApp.controller('viewController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
+	$http.get('/view/' + $routeParams.word)
+		.success(function(data) {
+			console.log(data[0]);
+			$scope.word = data[0].word; 
+			$scope.translate = data[0].translate;
+			$scope.image = data[0].image;
+			$scope.example = data[0].example;
+	
+		})
+		.error(function( err, status) {
+
+			console.log(err);
+		})
+
+	console.log($scope.word);
+
 	
 }])

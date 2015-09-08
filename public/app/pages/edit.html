@@ -2,6 +2,10 @@
 	<hr />
 <div class="row">
 	<div class="col-md-6" style="padding-top: 20px">
+		<div class="alert alert-success" role="alert" ng-show="message">
+		  <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
+		  <span class="sr-only">{{ message }}</span>
+		</div>
 		<form class="form-group">
 			<div class="form-inline">
 
@@ -25,7 +29,7 @@
 				<textarea class="form-control" id="exmpl" rows="3" ng-model='example'></textarea>
 			</div>
 			<button type="submit" class="btn btn-md btn-primary" ng-click="NewWord()">Create</button>
-			<button type="reset" class="btn btn-md btn-default" ng-click="word = ''; translate =''; image=''; example=''">Clear</button>
+			<button type="reset" class="btn btn-md btn-default" ng-click="clean('data has reset', 'info')">Clear</button>
 
 		</form>
 	</div>

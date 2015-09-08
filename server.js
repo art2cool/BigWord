@@ -47,7 +47,7 @@ app.get('/vocabulary', function (req, res) {
 });
 
 
-app.post('/new', function (req, res) {
+app.post('/new', function (req, res){
 	var word = new Word({
 
 		word: req.body.word,
@@ -61,6 +61,13 @@ app.post('/new', function (req, res) {
 	console.log("add this to mongoDB");
 });
 
+app.get('/view/:word', function (req,res){
+ 
+
+Word.find({word: req.params.word},function (err, words){
+		res.send(words);
+	})
+})
 
 app.listen(config.port, function (err) {
 	if (err) {

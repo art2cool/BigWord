@@ -1,0 +1,17 @@
+<div  ng-repeat="word in words">
+  <a href="{{'#/view/' + word.word}}" class="list-group-item">
+   <div class="row">  
+     <div class="col-md-3 col-sm-4">
+      <img ng-src="{{ word.image }}" style="max-width: 150px; max-hight: 150px" >
+    </div>
+
+    <div class="col-md-3 col-sm-4">
+      <h3>{{ word.word + ' - ' + word.translate }}</h3>
+      <p>{{ word.example }}</p>
+      <cite title="Source Title"><small>{{ word.date | date }}</small></cite>
+      <button class="btn btn-danger btn-xs" ng-click="wordDelete()">delete</button>
+      </div>
+    </div>
+  </a>
+  
+</div>
