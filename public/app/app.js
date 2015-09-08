@@ -7,6 +7,12 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'pages/main.html',
 			controller: 'mainController'
 		})
+		.when('/vocabulary', {
+
+			templateUrl: 'pages/vocabulary.html',
+			controller: 'mainController'
+		})
+
 		.when('/user/:name', {
 
 			templateUrl: 'pages/user.html',
@@ -35,6 +41,4 @@ MyApp.controller('addNew', ['$scope', '$http', function($scope, $http){
 		console.log('click');
 	}
 	
-
-
 }])

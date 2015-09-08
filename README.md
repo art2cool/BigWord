@@ -1,6 +1,7 @@
 This program will help you learn new words, increase your vocabulary.
 
 Program will be developed in several stages.
+
 stage 1
 - The creation of shell programs
 - Pages of adding new words to the dictionary (MongoDB)
