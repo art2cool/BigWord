@@ -1,39 +1,19 @@
-<h2>Vocabulary</h2>
+<h2>Vocabulary</h2><label>Sersch</label><input type="text">
 <hr />
 
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+<div  ng-repeat="word in words">
+  <a href="#" class="list-group-item">
+   <div class="row">  
+     <div class="col-md-3">
+      <img ng-src="{{ word.image }}" style="max-width: 150px; max-hight: 150px" >
+    </div>
+
+    <div class="col-md-3">
+      <h3>{{ word.word + ' - ' + word.translate }}</h3>
+      <p>{{ word.example }}</p>
+      <cite title="Source Title"><small>{{ word.date | date }}</small></cite>
       </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
+  </a>
+  
 </div>

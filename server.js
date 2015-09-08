@@ -18,15 +18,46 @@ mongoose.connect(config.database, function (err) {
 	} else {
 		console.log('Database connected');
 	}
-})
+});
 
+
+var schema = new mongoose.Schema({
+
+	word: String,
+	translate: String,
+	image: String,
+	example: String,
+	date: { type: Date, default: Date.now },
+	raiting: {type: Number, default: 100}
+
+});
+
+var Word = mongoose.model('Word', schema); 
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/public/index.html');
 
 });
 
-app.get('/add', function (req, res) {
+app.get('/vocabulary', function (req, res) {
+
+	Word.find(function (err, words){
+		res.send(words);
+	})
+});
+
+
+app.post('/new', function (req, res) {
+	var word = new Word({
+
+		word: req.body.word,
+		translate: req.body.translate,
+		image: req.body.image,
+		example: req.body.example
+	
+	})
+	word.save();
+	res.send('added new word');
 	console.log("add this to mongoDB");
 });
 
