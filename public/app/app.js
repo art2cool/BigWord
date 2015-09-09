@@ -48,10 +48,7 @@ MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function 
 				console.log(data);
 			})
 
-	$scope.wordDelete = function() {
-		console.log('deleted');
-
-	}		
+		
 
 }]);
 
@@ -116,7 +113,20 @@ MyApp.controller('viewController', ['$scope', '$routeParams', '$http', function 
 			console.log(err);
 		})
 
+
 	console.log($scope.word);
+
+
+	$scope.wordDelete = function() {
+		$http.delete('/view/'+ $routeParams.word + '/delete')
+			.success(function(data){
+				console.log(data)
+			})
+			.error(function( err, status) {
+				console.log(err);
+			})
+
+	}
 
 	
 }])

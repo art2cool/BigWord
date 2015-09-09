@@ -54,7 +54,7 @@ app.post('/new', function (req, res){
 		translate: req.body.translate,
 		image: req.body.image,
 		example: req.body.example
-	
+
 	})
 	word.save();
 	res.send('added new word');
@@ -62,12 +62,20 @@ app.post('/new', function (req, res){
 });
 
 app.get('/view/:word', function (req,res){
- 
-
-Word.find({word: req.params.word},function (err, words){
+		Word.find({word: req.params.word},function (err, words){
 		res.send(words);
 	})
+});
+
+app.delete('/view/:word/delete', function (req,res){
+
+	Word.remove({word: req.params.word}, function (err, result){
+			res.send('deleted');
+
+		});	
+
 })
+
 
 app.listen(config.port, function (err) {
 	if (err) {

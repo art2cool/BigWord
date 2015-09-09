@@ -1,7 +1,8 @@
 <h2>{{ word + ' - ' + translate }}</h2>
 <hr />
-<img ng-src="{{ image }}" style="max-width: 450px; max-hight: 350px" >
+<img ng-src="{{ image }}" style="max-width: 350px; max-hight: 350px" >
 <blockquote ng-show="example">
 	<p>Example</p>
 	<footer>{{ example }}</footer>
 </blockquote >
+<button class="btn btn-danger btn-sm" ng-click="wordDelete()">delete</button>
