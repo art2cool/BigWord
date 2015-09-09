@@ -61,8 +61,22 @@ app.post('/new', function (req, res){
 	console.log("add this to mongoDB");
 });
 
+app.post('/:word/edit', function (req, res){
+
+	Word.findOne({word: req.params.word}, function(err, doc){
+		
+			doc.word = req.body.word;
+			doc.translate = req.body.translate;
+			doc.image = req.body.image;
+			doc.example = req.body.example;
+			doc.save();
+		})
+	
+		res.send('Edit word');
+});
+
 app.get('/view/:word', function (req,res){
-		Word.find({word: req.params.word},function (err, words){
+	Word.find({word: req.params.word},function (err, words){
 		res.send(words);
 	})
 });
@@ -70,9 +84,9 @@ app.get('/view/:word', function (req,res){
 app.delete('/view/:word/delete', function (req,res){
 
 	Word.remove({word: req.params.word}, function (err, result){
-			res.send('deleted');
+		res.send('deleted');
 
-		});	
+	});	
 
 })
 

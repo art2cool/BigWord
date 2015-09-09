@@ -28,6 +28,11 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'pages/edit.html',
 		controller: 'addNew'
 	})
+	.when('/:word/edit', {
+
+		templateUrl: 'pages/edit.html',
+		controller: 'editController'
+	})
 	
 }])
 
@@ -37,57 +42,60 @@ MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function 
 	
 	$scope.name = $routeParams.name;
 
-		$http.get('/vocabulary')
-			.success(function(data) {
-						
-				$scope.words = data;
-		
-				console.log($scope.words);
-			})
-			.error(function(data, status) {
-				console.log(data);
-			})
+	$http.get('/vocabulary')
+	.success(function(data) {
 
+		$scope.words = data;
 		
+		console.log($scope.words);
+	})
+	.error(function(data, status) {
+		console.log(data);
+	})
+
+
 
 }]);
 
 MyApp.controller('addNew', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
 
-$scope.clean = function (message) {
-	
-	$scope.message = message;
-	$timeout(function() {
+	$scope.clean = function (message) {
 
-		$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
-		$scope.message = '';	
-	}, 2000)
-	
-}
+		$scope.message = message;
+		$timeout(function() {
+
+			$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
+			$scope.message = '';	
+		}, 2000)
+
+	}
 
 
-$scope.NewWord = function(){
+	$scope.NewWord = function(){
 
-	var word = {
+		var word = {
 			word: $scope.word,
 			translate: $scope.translate,
 			image: $scope.image,
 			example: $scope.example
 		};
 
-	$http.post('/new', word)
+		$http.post('/new', word)
 		.success(function (data) {
 			$scope.clean('Added in vocabulary');
-		console.log(data);
+			console.log(data);
 		})
 		.error(function(data, status) {
-				console.log(data);
+			console.log(data);
 
 		})
 
 	}
 	
 }]);
+
+
+
 
 MyApp.directive('searchResult', function(){
 	// Runs during compile
@@ -100,33 +108,81 @@ MyApp.directive('searchResult', function(){
 
 MyApp.controller('viewController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
 	$http.get('/view/' + $routeParams.word)
-		.success(function(data) {
-			console.log(data[0]);
-			$scope.word = data[0].word; 
-			$scope.translate = data[0].translate;
-			$scope.image = data[0].image;
-			$scope.example = data[0].example;
-	
-		})
-		.error(function( err, status) {
+	.success(function(data) {
+		console.log(data[0]);
+		$scope.word = data[0].word; 
+		$scope.translate = data[0].translate;
+		$scope.image = data[0].image;
+		$scope.example = data[0].example;
 
-			console.log(err);
-		})
+	})
+	.error(function( err, status) {
 
-
-	console.log($scope.word);
+		console.log(err);
+	})
 
 
 	$scope.wordDelete = function() {
 		$http.delete('/view/'+ $routeParams.word + '/delete')
-			.success(function(data){
-				console.log(data)
-			})
-			.error(function( err, status) {
-				console.log(err);
-			})
+		.success(function(data){
+			console.log(data)
+		})
+		.error(function( err, status) {
+			console.log(err);
+		})
 
 	}
 
 	
+}])
+
+MyApp.controller('editController', ['$scope','$http', '$routeParams','$timeout', function ($scope, $http, $routeParams, $timeout){
+
+	$scope.clean = function (message) {
+
+		$scope.message = message;
+		$timeout(function() {
+
+			$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
+			$scope.message = '';	
+		}, 2000)
+
+	}
+
+	$http.get('/view/' + $routeParams.word)
+	.success(function(data) {
+		
+		$scope.word = data[0].word; 
+		$scope.translate = data[0].translate;
+		$scope.image = data[0].image;
+		$scope.example = data[0].example;
+
+	})
+	.error(function( err, status) {
+
+		console.log(err);
+	})
+
+	$scope.NewWord = function(){
+
+		var word = {
+			word: $scope.word,
+			translate: $scope.translate,
+			image: $scope.image,
+			example: $scope.example
+		};
+		$http.post('/' + $routeParams.word + '/edit', word)
+		.success(function (data) {
+			$scope.clean('Edit word');
+			console.log(data);
+		})
+		.error(function(data, status) {
+			console.log(data);
+
+		})
+
+	}
+
+
+
 }])
