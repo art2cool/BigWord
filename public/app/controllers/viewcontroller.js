@@ -1,5 +1,3 @@
-require(['MyApp'], function (MyApp){
-
 MyApp.controller('viewController', ['$scope', '$routeParams', '$http', '$location', function ($scope, $routeParams, $http, $location){
 	$http.get('/view/' + $routeParams.word)
 	.success(function(data) {
@@ -50,4 +48,3 @@ MyApp.controller('viewController', ['$scope', '$routeParams', '$http', '$locatio
 	
 }]);
 
-});

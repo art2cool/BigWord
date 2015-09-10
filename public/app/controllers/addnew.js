@@ -1,5 +1,3 @@
-require(['MyApp'], function (MyApp){
-
 MyApp.controller('addNew', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
 
 	$scope.clean = function (message) {
@@ -36,4 +34,3 @@ MyApp.controller('addNew', ['$scope', '$http', '$location', '$timeout', function
 	
 }]);
 
-});

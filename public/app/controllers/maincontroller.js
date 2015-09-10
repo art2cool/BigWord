@@ -1,5 +1,4 @@
-require(['MyApp'], function (MyApp){
-	
+
 MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
 	$scope.names = ["Volodya", "Nazar", "Ira", "Dominick", "Veronica"];
 
@@ -18,4 +17,3 @@ MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function 
 
 
 }]);
-});

@@ -1,7 +1,7 @@
 <h2>Add new word</h2>
 	<hr />
 <div class="row">
-	<div class="col-md-6" style="padding-top: 20px">
+	<div class="col-md-6 col-sm-6" style="padding-top: 20px">
 		<div class="alert alert-success" role="alert" ng-show="message">
 		  <span class="glyphicon glyphicon glyphicon-ok" aria-hidden="true"></span>
 		  <span class="sr-only">{{ message }}</span>
@@ -33,10 +33,7 @@
 
 		</form>
 	</div>
-	<div class="col-md-1">
-		
-	</div>
-	<div class="col-md-5" style="margin-top: -20px">
+	<div class="col-md-5 col-md-offset-1 col-sm-5" style="margin-top: -20px">
 		<h3 ng-show="word || translate">{{ word + ' - '+ translate}}</h3> 
 		<img ng-src="{{image}}" class="img-thumbnail"  style="max-width: 250px; max-hight: 250px" ng-show="image">
 		<blockquote ng-show="example">

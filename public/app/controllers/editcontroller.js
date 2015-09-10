@@ -1,5 +1,3 @@
-require(['MyApp'], function (MyApp){
-
 MyApp.controller('editController', ['$scope','$http', '$routeParams','$timeout', function ($scope, $http, $routeParams, $timeout){
 
 	$scope.clean = function (message) {
@@ -50,4 +48,3 @@ MyApp.controller('editController', ['$scope','$http', '$routeParams','$timeout',
 
 
 }])
-});
