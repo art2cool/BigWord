@@ -12,7 +12,11 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'pages/vocabulary.html',
 		controller: 'mainController'
 	})
+	.when('/vocabulary/words', {
 
+		templateUrl: 'pages/vocabularywords.html',
+		controller: 'mainController'
+	})
 	.when('/user/:name', {
 
 		templateUrl: 'pages/user.html',
@@ -39,10 +43,10 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 
 MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
 	$scope.names = ["Volodya", "Nazar", "Ira", "Dominick", "Veronica"];
-	
+
 	$scope.name = $routeParams.name;
 
-	$http.get('/vocabulary')
+  	$http.get('/vocabulary')
 	.success(function(data) {
 
 		$scope.words = data;
@@ -102,11 +106,14 @@ MyApp.directive('searchResult', function(){
 	return {
 		restrict: 'AE',
 		templateUrl: 'directives/searchresult.html',
-		replace: true
+		replace: false,
+		scope: {
+			wordObject: "="
+		}
 	};
 });
 
-MyApp.controller('viewController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
+MyApp.controller('viewController', ['$scope', '$routeParams', '$http', '$location', function ($scope, $routeParams, $http, $location){
 	$http.get('/view/' + $routeParams.word)
 	.success(function(data) {
 		console.log(data[0]);
@@ -125,12 +132,32 @@ MyApp.controller('viewController', ['$scope', '$routeParams', '$http', function 
 	$scope.wordDelete = function() {
 		$http.delete('/view/'+ $routeParams.word + '/delete')
 		.success(function(data){
-			console.log(data)
+			$location.path('/vocabulary');
 		})
 		.error(function( err, status) {
 			console.log(err);
 		})
 
+	}
+	$scope.next = function (param) {
+	
+
+		for(var i = 0; i < $scope.words.length; i++){
+			if($scope.words[i].word === $routeParams.word){
+				$scope.curentNumber = i;
+
+				console.log($scope.words[i].word);
+
+			break;
+			}
+		}
+
+		if(param === 'next') $scope.curentNumber++;
+		if(param === 'prev') $scope.curentNumber--;
+
+			console.log($scope.words[$scope.curentNumber].word);
+			$location.path('/view/'+ $scope.words[$scope.curentNumber].word);
+	
 	}
 
 	

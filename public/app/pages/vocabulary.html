@@ -1,3 +1,11 @@
-<h2>Vocabulary</h2><label>Sersch</label><input type="text">
+<h2>Vocabulary</h2>
+<ul class="nav nav-pills">
+  <li role="presentation"><a href="#" ><span class="glyphicon glyphicon-list-alt"> Words</span></a></li>
+<li role="presentation" class="active "><a href="#"><span class="glyphicon glyphicon-list glyphicon" > List</span></a></li>
+  <li role="presentation"><a href="#"><span class="glyphicon glyphicon-th-large"> Cards</span></a></li>
+</ul>
 <hr />
-<search-result></search-result>
+
+<div ng-repeat="word in words">
+<search-result word-object="word" ></search-result>
+</div>
