@@ -7,6 +7,11 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'pages/main.html',
 		controller: 'mainController'
 	})
+	.when('/test', {
+
+		templateUrl: 'pages/test.html',
+		controller: 'testController'
+	})
 	.when('/vocabulary', {
 
 		templateUrl: 'pages/vocabulary.html',
@@ -40,6 +45,41 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 	
 }])
 
+MyApp.controller('testController', ['$scope','$http', function ($scope, $http){
+	$scope.counter = 0;
+	$scope.quiz = function(){
+		$scope.pictures = [];
+			$http.get('/test/quiz')
+			.success(function(data){
+				console.log(data);
+				$scope.ask = data[Math.floor(Math.random() * (data.length))].word; 
+				$scope.pictures = data;	
+			})
+			.error(function(err,status){
+				console.log(err);
+				console.log(status);
+			})
+		}
+		$scope.check = function (numb) {
+			if(numb === $scope.ask) {
+				$scope.counter++;
+				$scope.quiz();
+
+			}
+
+		}
+		// counter
+}]);
+
+
+MyApp.directive('testCards', function(){
+	return {
+		restrict: 'AE',
+		templateUrl: 'directives/testcards.html',
+		replace: false
+	};
+});
+
 
 MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http){
 	$scope.names = ["Volodya", "Nazar", "Ira", "Dominick", "Veronica"];
@@ -50,8 +90,7 @@ MyApp.controller('mainController', ['$scope', '$routeParams', '$http', function 
 	.success(function(data) {
 
 		$scope.words = data;
-		
-		console.log($scope.words);
+	
 	})
 	.error(function(data, status) {
 		console.log(data);

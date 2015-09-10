@@ -89,7 +89,31 @@ app.delete('/view/:word/delete', function (req,res){
 	});	
 
 })
+//tests
 
+app.get('/test/quiz', function (req,res){
+	
+
+
+	Word.find(function (err, words){
+		var data = [];
+		
+		function randoms(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		};
+
+		while(data.length < 4 ){
+
+			var random = randoms(0, words.length-1);
+			var	elem = words.splice(random, 1);
+			data.push( elem[0] );
+			
+		}
+
+		res.send(data);
+	});
+
+});
 
 app.listen(config.port, function (err) {
 	if (err) {
