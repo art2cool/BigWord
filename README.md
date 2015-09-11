@@ -16,7 +16,7 @@ stage 3
 - The creation of multiple login Members
 - statistics
 - Revision and modification interface
-- 
+ 
 stage 4 
 - use googleTranslate API fo chosse translate words.
 - use google Pic search to propouse images for users new words
