@@ -12,14 +12,14 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'pages/test.html',
 		controller: 'testController'
 	})
+	.when('/test/:id', {
+
+		templateUrl: 'pages/test.html',
+		controller: 'testController'
+	})
 	.when('/vocabulary', {
 
 		templateUrl: 'pages/vocabulary.html',
-		controller: 'mainController'
-	})
-	.when('/vocabulary/words', {
-
-		templateUrl: 'pages/vocabularywords.html',
 		controller: 'mainController'
 	})
 	.when('/user/:name', {
@@ -54,6 +54,13 @@ MyApp.directive('testCards', function(){
 	};
 });
 
+MyApp.directive('testWords', function(){
+	return {
+		restrict: 'AE',
+		templateUrl: 'directives/testwords.html',
+		replace: false
+	};
+});
 
 MyApp.directive('searchResult', function(){
 	// Runs during compile

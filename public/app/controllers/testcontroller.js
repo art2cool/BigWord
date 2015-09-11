@@ -1,4 +1,6 @@
-MyApp.controller('testController', ['$scope','$http', function ($scope, $http){
+MyApp.controller('testController', ['$scope','$http', '$routeParams', function ($scope, $http, $routeParams){
+	
+	$scope.test = $routeParams.id;
 	$scope.counter = 0;
 	$scope.quiz = function(){
 	
@@ -6,10 +8,16 @@ MyApp.controller('testController', ['$scope','$http', function ($scope, $http){
 		$http.get('/test/quiz')
 		.success(function(data){
 			console.log(data);
-			$scope.ask = data[Math.floor(Math.random() * (data.length))].word; 
-			$scope.pictures = data;	
-
-		})
+			if ($scope.test == 1) {
+				$scope.ask = data[Math.floor(Math.random() * (data.length))].word; 
+				$scope.pictures = data;	
+			} else if( $scope.test == 2) {
+				$scope.image = data[Math.floor(Math.random() * (data.length))].image; 
+				$scope.answers = data;
+			} else {
+				console.log('routeParams ' + $routeParams.id);
+			}
+		}) 
 		.error(function(err,status){
 			console.log(err);
 			console.log(status);

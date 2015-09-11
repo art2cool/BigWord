@@ -10,9 +10,9 @@ stage 1
 stage 2
 - Edit and delete the dictionary
 - Creating tests to memorize words
-- The creation of a rating system with words
+- The creation of a rating system with words.
 
 stage 3
-- The creation of multiple lohinky Members area
+- The creation of multiple login Members
 - statistics
 - Revision and modification interface
