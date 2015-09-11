@@ -24,12 +24,17 @@ MyApp.controller('testController', ['$scope','$http', '$routeParams', function (
 		})
 	}
 	$scope.check = function (numb) {
-		if(numb === $scope.ask) {
-			$scope.counter++;
-			$scope.quiz();
-
+		if( $scope.test == 1 ) {
+			if(numb === $scope.ask) {
+				$scope.counter++;
+				$scope.quiz();
+			}
+		} else if ($scope.test == 2){
+			if(numb === $scope.image) {
+				$scope.counter++;
+				$scope.quiz();
+			}	
 		}
-
 	}
 		// counter
 	}]);
