@@ -1,76 +1,53 @@
+require('angular');
+require('angular-route');
+
 var MyApp = angular.module('MyApp', ['ngRoute']);
+
+
+require('./controllers/index.js');
+require('./directives/index.js');
+
+
+
 
 MyApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 	.when('/', {
 
-		templateUrl: 'pages/main.html',
+		templateUrl: 'app/views/main.html',
 		controller: 'mainController'
-	})
-	.when('/test', {
-
-		templateUrl: 'pages/test.html',
-		controller: 'testController'
 	})
 	.when('/test/:id', {
 
-		templateUrl: 'pages/test.html',
+		templateUrl: 'app/views/test.html',
 		controller: 'testController'
 	})
 	.when('/vocabulary', {
 
-		templateUrl: 'pages/vocabulary.html',
+		templateUrl: 'app/views/vocabulary.html',
 		controller: 'mainController'
 	})
 	.when('/user/:name', {
 
-		templateUrl: 'pages/user.html',
+		templateUrl: 'app/views/user.html',
 		controller: 'mainController'
 	})
 	.when('/view/:word', {
 
-		templateUrl: 'pages/view.html',
+		templateUrl: 'app/views/view.html',
 		controller: 'viewController'
 	})
 	.when('/edit/', {
 
-		templateUrl: 'pages/edit.html',
-		controller: 'addNew'
+		templateUrl: 'app/views/edit.html',
+		controller: 'addController'
 	})
 	.when('/:word/edit', {
 
-		templateUrl: 'pages/edit.html',
+		templateUrl: 'app/views/edit.html',
 		controller: 'editController'
 	})
 	
 }])
 
-
-MyApp.directive('testCards', function(){
-	return {
-		restrict: 'AE',
-		templateUrl: 'directives/testcards.html',
-		replace: false
-	};
-});
-
-MyApp.directive('testWords', function(){
-	return {
-		restrict: 'AE',
-		templateUrl: 'directives/testwords.html',
-		replace: false
-	};
-});
-
-MyApp.directive('searchResult', function(){
-	// Runs during compile
-	return {
-		restrict: 'AE',
-		templateUrl: 'directives/searchresult.html',
-		replace: false,
-		scope: {
-			wordObject: "="
-		}
-	};
-});
 

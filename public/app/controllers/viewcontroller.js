@@ -1,5 +1,5 @@
-MyApp.controller('viewController', ['$scope', '$routeParams', '$http', '$location', function ($scope, $routeParams, $http, $location){
-	$http.get('/view/' + $routeParams.word)
+module.exports = ['$scope', '$routeParams', '$http', '$location', function ($scope, $routeParams, $http, $location){
+	$http.get('http://localhost:3000/view/' + $routeParams.word)
 	.success(function(data) {
 		console.log(data[0]);
 		$scope.word = data[0].word; 
@@ -15,7 +15,7 @@ MyApp.controller('viewController', ['$scope', '$routeParams', '$http', '$locatio
 
 
 	$scope.wordDelete = function() {
-		$http.delete('/view/'+ $routeParams.word + '/delete')
+		$http.delete('http://localhost:3000/view/'+ $routeParams.word + '/delete')
 		.success(function(data){
 			$location.path('/vocabulary');
 		})
@@ -46,5 +46,4 @@ MyApp.controller('viewController', ['$scope', '$routeParams', '$http', '$locatio
 	}
 
 	
-}]);
-
+}];

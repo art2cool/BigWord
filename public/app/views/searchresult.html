@@ -1,0 +1,14 @@
+<div class="col-lg-4 col-md-6 col-sm-8">
+  <a href="{{'#/view/' + wordObject.word}}" class="list-group-item">
+   <div class="row">  
+     <div class="col-lg-5 col-md-5 col-sm-4">
+      <img ng-src="{{ wordObject.image }}" style="max-width: 150px; max-height: 100px" >
+    </div>
+
+    <div class="col-lg-6 col-lg-offset-1 col-md-7 col-sm-4">
+      <h3>{{ wordObject.word + ' - ' + wordObject.translate }}</h3>
+      <cite title="Source Title"><small style="opacity: 0.4">{{ wordObject.date | date }}</small></cite>
+    </div>
+  </div>
+</a>
+</div>

@@ -1,17 +1,16 @@
-MyApp.controller('editController', ['$scope','$http', '$routeParams','$timeout', function ($scope, $http, $routeParams, $timeout){
+module.exports = ['$scope','$http', '$routeParams','$timeout', function ($scope, $http, $routeParams, $timeout){
 
 	$scope.clean = function (message) {
 
 		$scope.message = message;
 		$timeout(function() {
-
 			$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
 			$scope.message = '';	
 		}, 2000)
 
 	}
 
-	$http.get('/view/' + $routeParams.word)
+	$http.get('http://localhost:3000/view/' + $routeParams.word)
 	.success(function(data) {
 		
 		$scope.word = data[0].word; 
@@ -33,7 +32,7 @@ MyApp.controller('editController', ['$scope','$http', '$routeParams','$timeout',
 			image: $scope.image,
 			example: $scope.example
 		};
-		$http.post('/' + $routeParams.word + '/edit', word)
+		$http.post('http://localhost:3000/' + $routeParams.word + '/edit', word)
 		.success(function (data) {
 			$scope.clean('Edit word');
 			console.log(data);
@@ -47,4 +46,4 @@ MyApp.controller('editController', ['$scope','$http', '$routeParams','$timeout',
 
 
 
-}])
+}];

@@ -1,0 +1,26 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "srv": "webpack-dev-server --inline -d"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    
+    "css-loader": "^0.17.0",
+    "fs": "0.0.2",
+    "handlebars": "^4.0.2",
+    "html-loader": "^0.3.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "style-loader": "^0.12.3"
+  },
+  "dependencies": {
+    "angular": "^1.4.5",
+    "angular-route": "^1.4.5"
+  }
+}

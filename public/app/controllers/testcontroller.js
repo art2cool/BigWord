@@ -1,11 +1,11 @@
-MyApp.controller('testController', ['$scope','$http', '$routeParams', function ($scope, $http, $routeParams){
+module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $routeParams){
 	
 	$scope.test = $routeParams.id;
 	$scope.counter = 0;
 	$scope.quiz = function(){
 	
 		$scope.pictures = [];
-		$http.get('/test/quiz')
+		$http.get('http://localhost:3000/test/quiz')
 		.success(function(data){
 			console.log(data);
 			if ($scope.test == 1) {
@@ -37,4 +37,4 @@ MyApp.controller('testController', ['$scope','$http', '$routeParams', function (
 		}
 	}
 		// counter
-	}]);
+}];
