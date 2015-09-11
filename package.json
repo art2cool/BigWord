@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    
     "css-loader": "^0.17.0",
     "fs": "0.0.2",
     "handlebars": "^4.0.2",
@@ -21,6 +20,8 @@
   },
   "dependencies": {
     "angular": "^1.4.5",
-    "angular-route": "^1.4.5"
+    "angular-route": "^1.4.5",
+    "css-loader": "^0.18.0",
+    "style-loader": "^0.12.3"
   }
 }
