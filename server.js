@@ -1,13 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var path = require('path');
 var mongoose = require('mongoose');
 var config = require('./config');
+var schema = require('./modules/schema');
 
 
 var app = express();
 
-app.use(express.static(path.join(__dirname, '/public/app/')));
+app.use(express.static('/public/app/'));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
@@ -29,16 +29,6 @@ mongoose.connect(config.database, function (err) {
 });
 
 
-var schema = new mongoose.Schema({
-
-	word: String,
-	translate: String,
-	image: String,
-	example: String,
-	date: { type: Date, default: Date.now },
-	raiting: {type: Number, default: 100}
-
-});
 
 var Word = mongoose.model('Word', schema); 
 

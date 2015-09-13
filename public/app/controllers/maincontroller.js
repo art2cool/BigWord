@@ -10,4 +10,5 @@ module.exports =  ['$scope', '$routeParams', '$http', function ($scope, $routePa
 		}, function(data, status) {
 			console.log(data);
 		});
+		$scope.showList = true;
 }];

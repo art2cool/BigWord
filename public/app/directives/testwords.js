@@ -3,6 +3,6 @@ module.exports =
 		return {
 			restrict: 'AE',
 			templateUrl: 'app/views/testwords.html',
-			replace: false
+			replace: true
 		}
 	};

@@ -1,14 +1,19 @@
 <h2>Vocabulary</h2>
 <ul class="nav nav-pills">
-  <li role="presentation"><a href="#" ><span class="glyphicon glyphicon-list-alt" > Words</span></a></li>
-<li role="presentation" class="active "><a href="#"><span class="glyphicon glyphicon-list glyphicon" > List</span></a></li>
-  <li role="presentation">
-  	<a href="#"><span class="glyphicon glyphicon-th-large"> Cards</span></a>
+  <li role="presentation"  ng-click="showWords = true; showList = ''; showCards = ''" ng-class="{active: showWords}"><a href="#/vocabulary" ><span class="glyphicon glyphicon-list-alt" > Words</span></a></li>
+	<li role="presentation" ng-class="{active: showList}" ng-click="showWords = ''; showList = true; showCards = ''"><a href="#/vocabulary"><span class="glyphicon glyphicon-list glyphicon" > List</span></a></li>
+ 	 <li role="presentation" ng-class="{active: showCards}"><a href="#/vocabulary"><span class="glyphicon glyphicon-th-large"> Cards</span></a>
   </li>
 </ul>
 <hr />
 
-<div ng-repeat="word in words">
-	<search-result word-object="word" layout='{{ style }}'></search-result>
+<div ng-repeat="word in words" ng-show="showWords">
+	<search-result-words word-object="word" name='{{ word.word }}'></search-result>
+</div>
+<div ng-repeat="word in words" ng-show="showList">
+	<search-result-list word-object="word" name='{{ word.word }}'></search-result>
 </div>
 
+<div ng-repeat="word in words" ng-show="showCards">
+	<search-result-cards word-object="word" name='{{ word.word }}'></search-result>
+</div>
