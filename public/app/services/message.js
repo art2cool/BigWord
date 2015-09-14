@@ -1,6 +1,15 @@
-module.exports = ['$scope', function ($scope) {
+module.exports = ['$scope','$timeout', function ($scope, $timeout) {
 
-		console.log($scope);
+
+$scope.clean = function (message) {
+
+		$scope.message = message;
+		$timeout(function() {
+			$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
+			$scope.message = '';	
+		}, 2000)
+
+	};
 	}
 
 ]

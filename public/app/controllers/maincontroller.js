@@ -5,9 +5,8 @@ module.exports =  ['$scope', '$routeParams', '$http', function ($scope, $routePa
 	$http.get('http://localhost:3000/vocabulary')
 		.then(function(data) {
 			$scope.words = data.data;
-			console.log($scope.words);
-		}, function(err, status) {
+			}, function(err, status) {
 			console.log(err);
 		});
-		$scope.showList = true;
+		$scope.showWords = true;
 }];

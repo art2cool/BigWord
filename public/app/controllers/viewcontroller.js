@@ -1,4 +1,5 @@
 module.exports = ['$scope', '$routeParams', '$http', '$location', function ($scope, $routeParams, $http, $location){
+	
 	$http.get('http://localhost:3000/view/' + $routeParams.word)
 		.then(function(data) {
 			data = data.data;

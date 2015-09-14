@@ -28,9 +28,28 @@ mongoose.connect(config.database, function (err) {
 	}
 });
 
-
-
 var Word = mongoose.model('Word', schema); 
+
+app.post('/raiting/:id', function (req, res) {
+	if (req.params.id === '1') {
+		Word.findOne({word: req.body.word}, function(err, doc) {
+			if (req.body.raiting === 'up') doc.raiting += 10;
+			if (req.body.raiting === 'down') doc.raiting -= 20;
+
+			doc.save();
+		})
+
+	}
+	if (req.params.id === '2') {
+		Word.findOne({image: req.body.image}, function(err, doc) {
+			if (req.body.raiting === 'up') doc.raiting += 10;
+			if (req.body.raiting === 'down') doc.raiting -= 20;
+
+			doc.save();
+		})
+	}
+	res.send("done");
+});
 
 app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/public/index.html');
@@ -87,15 +106,22 @@ app.delete('/view/:word/delete', function (req,res){
 	});	
 
 })
-//tests
+
 
 app.get('/test/quiz', function (req,res){
 	
-
-
 	Word.find(function (err, words){
 		var data = [];
 		
+			words.sort(function(a,b) {
+			if(a.raiting < b.raiting) {
+				return -1;
+			} if (a.raiting > b.raiting) {
+				return 1;
+			};
+			return 0;
+		});
+		words = words.splice(0, Math.floor(words.length/2));
 		function randoms(min, max) {
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		};
