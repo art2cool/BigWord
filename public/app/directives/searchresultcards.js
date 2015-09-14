@@ -4,7 +4,7 @@ module.exports =
 		return {
 			restrict: 'AE',
 			templateUrl: 'app/views/searchresultcards.html',
-			replace: false,
+			replace: true,
 			scope: {
 				wordObject: "="
 			},

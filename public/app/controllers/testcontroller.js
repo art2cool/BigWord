@@ -1,4 +1,4 @@
-module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $routeParams){
+module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $routeParams) {
 	
 	$scope.test = $routeParams.id;
 	$scope.counter = 0;
@@ -6,8 +6,9 @@ module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $ro
 	
 		$scope.pictures = [];
 		$http.get('http://localhost:3000/test/quiz')
-		.success(function(data){
-			console.log(data);
+		.then(function(data){
+			console.log(data.data);
+			data = data.data;
 			if ($scope.test == 1) {
 				$scope.ask = data[Math.floor(Math.random() * (data.length))].word; 
 				$scope.pictures = data;	
@@ -17,10 +18,8 @@ module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $ro
 			} else {
 				console.log('routeParams ' + $routeParams.id);
 			}
-		}) 
-		.error(function(err,status){
+		}, function(err, status){
 			console.log(err);
-			console.log(status);
 		})
 	}
 	$scope.check = function (numb) {

@@ -6,6 +6,7 @@ var MyApp = angular.module('MyApp', ['ngRoute']);
 
 require('./controllers/index.js');
 require('./directives/index.js');
+require('./services/index.js');
 
 
 

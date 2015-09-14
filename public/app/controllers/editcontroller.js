@@ -11,18 +11,17 @@ module.exports = ['$scope','$http', '$routeParams','$timeout', function ($scope,
 	}
 
 	$http.get('http://localhost:3000/view/' + $routeParams.word)
-	.success(function(data) {
-		
+	.then(function(data) {
+		data = data.data;
 		$scope.word = data[0].word; 
 		$scope.translate = data[0].translate;
 		$scope.image = data[0].image;
 		$scope.example = data[0].example;
 
-	})
-	.error(function( err, status) {
+	}, function( err, status) {
 
 		console.log(err);
-	})
+	});
 
 	$scope.NewWord = function(){
 
@@ -33,17 +32,12 @@ module.exports = ['$scope','$http', '$routeParams','$timeout', function ($scope,
 			example: $scope.example
 		};
 		$http.post('http://localhost:3000/' + $routeParams.word + '/edit', word)
-		.success(function (data) {
-			$scope.clean('Edit word');
-			console.log(data);
-		})
-		.error(function(data, status) {
-			console.log(data);
+			.then(function (data) {
+				$scope.clean('Edit word');
+			}, function(data, status) {
+				console.log(data);
 
-		})
-
-	}
-
-
+			})
+		}
 
 }];
