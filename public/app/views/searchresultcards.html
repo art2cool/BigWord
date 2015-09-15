@@ -2,7 +2,17 @@
     <cite title="Source Title"><small style="opacity: 0.4">{{ wordObject.date | date }}</small></cite>
     <p></p>
       <div class="thumbnail" style="height: 450px;">
-      <h5> Words raiting: {{ wordObject.raiting }}</h5>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=0"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=0"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=20"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=20"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=40"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=40"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=60"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=60"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=80"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=80"></span>
+      <p>{{ wordObject.raiting }}<p>
        <img ng-src="{{ wordObject.image }}" style="max-width: 240px; max-height: 260px">
       <div class="caption">
         <h3>{{ wordObject.word + ' - ' + wordObject.translate }}</h3>

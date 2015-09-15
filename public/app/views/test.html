@@ -3,10 +3,13 @@
 <hr />
 
 <div ng-show="test == 1">
-<h2 align="center" >{{ ask }} </h2>
+<h2 align="center" class="" >{{ ask }} </h2>
+<hr />
 <div class="row" >
 	<div ng-repeat="image in pictures">
+	<div class="col-xs-6 col-md-3">
 		<test-cards></test-cards>
+		</div>
 	</div>
 </div>
 </div>
@@ -15,9 +18,11 @@
 	<div align="center" class="col-md-6 col-sm-5">
 		<img ng-src="{{ image }}" style="max-width: 300px; max-height: 250px" class="img-thumbnail" >
 	</div>
-	<div class="list-group col-lg-3 col-md-3 col-sm-4">
-		<div ng-repeat="answer in answers">
-			<test-words></test-words>
-		</div>
+	<div class=" col-md-5 col-sm-5 col-xs-5 col-md-2">
+		<div ng-repeat="answer in answers" >
+			
+				<test-words></test-words>
+			</div>
+	
 	</div>
 </div>

@@ -1,18 +1,19 @@
 module.exports = ['$scope','$http', '$routeParams','$timeout',  function ($scope, $http, $routeParams, $timeout){
-	
-	// $scope.message = '';
-	// $scope.validate = function () {
-	// 	return true;
-	// 	};
 
-	// $scope.clean = function (mess) {
-	// 	messager.clean(mess);
-	// };
 
+
+$scope.clean = function (message) {
+
+		$scope.message = message;
+		$timeout(function() {
+			$scope.word = ''; $scope.translate =''; $scope.image='';   $scope.example='';
+			$scope.message = '';	
+		}, 2000)
+
+	};
 	$http.get('http://localhost:3000/view/' + $routeParams.word)
 	.then(function(data) {
 		data = data.data;
-		console.log(data);
 		$scope.word = data[0].word; 
 		$scope.translate = data[0].translate;
 		$scope.image = data[0].image;

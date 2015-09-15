@@ -7,9 +7,8 @@ var schema = new mongoose.Schema({
 	image: String,
 	example: String,
 	date: { type: Date, default: Date.now },
-	raiting: {type: Number, default: 100}
+	raiting: {type: Number, default: 10}
 
 });
-
-
-module.exports = schema;
+ 
+module.exports = mongoose.model('Word', schema); 

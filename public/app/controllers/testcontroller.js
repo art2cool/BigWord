@@ -8,9 +8,6 @@ module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $ro
 		$http.get('http://localhost:3000/test/quiz')
 		.then(function(data){
 			data = data.data;
-			for (var i = 0; i < data.length; i++) {
-				console.log(data[i].raiting);
-			};
 			if ($scope.test == 1) {
 				$scope.ask = data[Math.floor(Math.random() * (data.length))].word; 
 				$scope.pictures = data;	
@@ -54,8 +51,7 @@ module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $ro
 
 			$http.post('http://localhost:3000/raiting/2', mark)
 				.then(function(data) {
-					console.log(data.data);
-				}, function(err) {
+					}, function(err) {
 					console.log(err);
 				})
 
