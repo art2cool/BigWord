@@ -8,12 +8,16 @@ module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $ro
 		$http.get('http://localhost:3000/test/quiz')
 		.then(function(data){
 			data = data.data;
-			if ($scope.test == 1) {
+			if ( $scope.test == 1 ) {
 				$scope.ask = data[Math.floor(Math.random() * (data.length))].word; 
 				$scope.pictures = data;	
-			} else if( $scope.test == 2) {
+			} else if ( $scope.test == 2 ) {
 				$scope.image = data[Math.floor(Math.random() * (data.length))].image; 
 				$scope.answers = data;
+			// } else if ($scope.test == 3) {
+			// 	$scope.ask = data[Math.floor(Math.random() * (data.length))];
+			// 	$scope.ask.letters = $scope.ask.word.split('');
+			// 	console.log($scope.letters);
 			} else {
 				console.log('routeParams ' + $routeParams.id);
 			}

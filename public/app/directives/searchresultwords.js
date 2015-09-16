@@ -6,12 +6,7 @@ module.exports =
 			templateUrl: 'app/views/searchresultwords.html',
 			replace: false,
 			scope: {
-				wordObject: "="
-			},
-			link: function($scope, elem, attr) {
-				//console.log(attr.name.substring(0,1));
-
-
+				wordObject: "=",
 			}
 		} 
 	};

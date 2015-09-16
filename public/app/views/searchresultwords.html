@@ -1,5 +1,19 @@
-<div class="col-lg-4 col-md-6 col-sm-8">
-  <a href="{{'#/view/' + wordObject.word}}" class="list-group-item">
-      <h4>{{ wordObject.word + ' - ' + wordObject.translate }}</h4>
-  </a>
-</div>
+
+	<td> index {{ $index }} </td>
+	<td> <a href="{{'#/view/' + wordObject.word}}" > {{ wordObject.word }} </a></td>
+	<td> - </td>
+	<td> {{ wordObject.translate }}</td>
+	<td> {{wordObject.raiting}}
+	<span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=0"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=0"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=20"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=20"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=40"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=40"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=60"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=60"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="wordObject.raiting <=80"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=80"></span>
+	 </td>
+	<td> {{ wordObject.date | date }} </td>
+      <td> <a href="{{'#/' + wordObject.word + '/edit'}}" ><span  class="glyphicon glyphicon-edit"></span></a> <a href="#/vocabulary" ><span class="glyphicon glyphicon-remove-circle btn-danger"></span></a>

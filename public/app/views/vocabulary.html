@@ -14,17 +14,29 @@
   </form>
 </div>
 
-<div ng-repeat="word in words | filter:srch" ng-show="showWords">
-  <search-result-words word-object="word" name='{{ word.word }}'></search-result>
+<div class="row" ng-show="showWords">
+<div class="col-lg-9">
+  <table class="table table-hover">
+    <thead>
+      <th ng-click="orderByElem = $index; reverseSort = !reverseSort"> # </th>
+      <th ng-click="orderByElem = 'word'; reverseSort = !reverseSort">Word </th>
+      <th></th>
+      <th ng-click="orderByElem = 'translate'; reverseSort = !reverseSort">Translate</th>
+      <th ng-click="orderByElem = 'raiting'; reverseSort = !reverseSort">Raiting</th>
+      <th ng-click="orderByElem = 'date'; reverseSort = !reverseSort">Added</th>
+      <th></th>
+    </thead>
+    <tbody>
+       <tr search-result-words ng-repeat="word in words | filter:srch  | orderBy: orderByElem : reverseSort" word-object="word"></tr>
+      </tbody>
+ </table>
 </div>
-
+</div>
 <div ng-repeat="word in words | filter:srch" ng-show="showList">
-	<search-result-list word-object="word" name='{{ word.word }}'></search-result>
+	<search-result-list word-object="word" name='{{ word.word }}'></search-result-list>
 </div>
 
 <div ng-repeat="word in words | filter:srch" ng-show="showCards" >
-	<search-result-cards word-object="word" name='{{ word.word }}'></search-result>
-  <search-result-cards word-object="word" name='{{ word.word }}'></search-result>
-  <search-result-cards word-object="word" name='{{ word.word }}'></search-result>
-  
+	<search-result-cards word-object="word" name='{{ word.word }}'></search-result-cards>
+ 
 </div>

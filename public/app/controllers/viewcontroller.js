@@ -7,7 +7,7 @@ module.exports = ['$scope', '$routeParams', '$http', '$location', function ($sco
 			$scope.translate = data[0].translate;
 			$scope.image = data[0].image;
 			$scope.example = data[0].example;
-
+			$scope.raiting = data[0].raiting;
 		}, function(err, status) {
 			console.log(err);
 		});

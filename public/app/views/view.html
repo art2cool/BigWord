@@ -8,6 +8,16 @@
 	</div>
 
 <div class="col-lg-7 col-lg-offset-1 col-md-7 col-md-offset-2 col-sm-6 col-sm-offset-1 col-xs-6">
+<span class='glyphicon glyphicon-star-empty' ng-show="raiting <=0"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="raiting <=0"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="raiting <=20"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="raiting <=20"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="raiting <=40"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="raiting <=40"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="raiting <=60"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="raiting <=60"></span>
+      <span class='glyphicon glyphicon-star-empty' ng-show="raiting <=80"></span>
+      <span class='glyphicon glyphicon-star' ng-hide="raiting <=80"></span>
 		<h2>{{ word + ' - ' + translate }}</h2>
 		
 		<img ng-src="{{ image }}" style="max-width: 380px; max-height: 280px" >
