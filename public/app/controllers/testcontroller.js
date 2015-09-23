@@ -14,10 +14,11 @@ module.exports = ['$scope','$http', '$routeParams', function ($scope, $http, $ro
 			} else if ( $scope.test == 2 ) {
 				$scope.image = data[Math.floor(Math.random() * (data.length))].image; 
 				$scope.answers = data;
-			// } else if ($scope.test == 3) {
-			// 	$scope.ask = data[Math.floor(Math.random() * (data.length))];
-			// 	$scope.ask.letters = $scope.ask.word.split('');
-			// 	console.log($scope.letters);
+			} else if ($scope.test == 3) {
+
+				$scope.ask = data[Math.floor(Math.random() * (data.length))];
+				$scope.ask.letters = $scope.ask.word.split('');
+				console.log($scope.ask.letters);
 			} else {
 				console.log('routeParams ' + $routeParams.id);
 			}

@@ -3,7 +3,7 @@
 <hr />
 
 <div ng-show="test == 1">
-<h2 align="center" class="" >{{ ask }} </h2>
+<h2 align="center"  >{{ ask }} </h2>
 <hr />
 <div class="row" >
 	<div ng-repeat="image in pictures">
@@ -26,4 +26,14 @@
 	
 	</div>
 </div>
+
+<div class="row" ng-show="test == 3">
+	<div align="center" class="col-md-6 col-sm-5">
+		<img ng-src="{{ ask.image }}" style="max-width: 300px; max-height: 250px" class="img-thumbnail" >
+	</div>
+</div>
+	<div class="row" > 
+		<test-letters letters='letters' ng-repeat="letter in ask.letters"></test-letters>
+	</div>
+	
 

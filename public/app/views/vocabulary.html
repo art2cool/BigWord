@@ -18,7 +18,7 @@
 <div class="col-lg-9">
   <table class="table table-hover">
     <thead>
-      <th ng-click="orderByElem = $index; reverseSort = !reverseSort"> # </th>
+      <th> # </th>
       <th ng-click="orderByElem = 'word'; reverseSort = !reverseSort">Word </th>
       <th></th>
       <th ng-click="orderByElem = 'translate'; reverseSort = !reverseSort">Translate</th>
@@ -27,7 +27,7 @@
       <th></th>
     </thead>
     <tbody>
-       <tr search-result-words ng-repeat="word in words | filter:srch  | orderBy: orderByElem : reverseSort" word-object="word"></tr>
+       <tr index='{{$index + 1}}' search-result-words ng-repeat="word in words | filter:srch  | orderBy: orderByElem : reverseSort" word-object="word"></tr>
       </tbody>
  </table>
 </div>

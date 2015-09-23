@@ -10,4 +10,14 @@ module.exports =  ['$scope', '$routeParams', '$http', function ($scope, $routePa
 			console.log(err);
 		});
 		$scope.showWords = true;
+
+		$scope.deleteEl = function($index) {
+
+			console.log($index + ' elem');
+		}
+
+		$scope.deleteFromList = function () {
+			console.log("index");
+
+		}
 }];

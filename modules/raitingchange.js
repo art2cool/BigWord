@@ -36,7 +36,7 @@ getQuiz: function(req, res){
 			};
 			return 0;
 		});
-		words = words.splice(0, Math.floor(words.length/2));
+		words = words.splice(0, Math.floor(words.length/3));
 		function randoms(min, max) {
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		};

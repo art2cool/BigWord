@@ -1,5 +1,5 @@
-
-	<td> index {{ $index }} </td>
+<tr ng-transclude>
+	<td >{{ index }} </td>
 	<td> <a href="{{'#/view/' + wordObject.word}}" > {{ wordObject.word }} </a></td>
 	<td> - </td>
 	<td> {{ wordObject.translate }}</td>
@@ -16,4 +16,5 @@
       <span class='glyphicon glyphicon-star' ng-hide="wordObject.raiting <=80"></span>
 	 </td>
 	<td> {{ wordObject.date | date }} </td>
-      <td> <a href="{{'#/' + wordObject.word + '/edit'}}" ><span  class="glyphicon glyphicon-edit"></span></a> <a href="#/vocabulary" ><span class="glyphicon glyphicon-remove-circle btn-danger"></span></a>
+      <td> <a href="{{'#/' + wordObject.word + '/edit'}}" ><span  class="glyphicon glyphicon-edit"></span></a> <!-- <a href="#/vocabulary"><span class="glyphicon glyphicon-remove-circle btn-danger"></span></a> --></td>
+</tr>
