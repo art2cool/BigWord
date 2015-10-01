@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html ng-app="MyApp">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<title>menu</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="app/main.css">
+  <title>menu</title>
 </head>
 <body>
-<nav class="navbar navbar navbar-inverse" ng-controller="mainController">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-    <a class="navbar-brand" ng-href="#/">Home</a>
-      <a class="navbar-brand" ng-href="#/test/1">Test #1</a>
-      <a class="navbar-brand" ng-href="#/test/2">Test #2</a>
-      <a class="navbar-brand" ng-href="#/test/3">Test #3</a>
-    <a class="navbar-brand" ng-href="#/vocabulary">Vocabulary</a>
-             
-    <a class="navbar-brand" ng-href="#/edit"> New word </a>
+  <nav class="navbar navbar navbar-inverse" ng-controller="mainController">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+      <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" ng-href="#/">Home</a></li>
+        <li><a class="navbar-brand" ng-href="#/test/1">Test #1</a></li>
+        <li><a class="navbar-brand" ng-href="#/test/2">Test #2</a></li>
+        <li><a class="navbar-brand" ng-href="#/vocabulary">Vocabulary</a></li>
+        <li><a class="navbar-brand" ng-href="#/edit"> New word </a></li>
+        <li><a ng-href="#/register">Register</a></li>
+        <ul>
+      </div>
     </div>
-</div>
-</nav>
-<div class="container" ng-controller="mainController">
-	<div ng-view></div>
-	
-  </div>
+  </nav>
+  <div class="container" ng-controller="mainController">
+   <div ng-view></div>
+
+ </div>
   <!-- 
 <blockquote class="blockquote-reverse">
   <p>This program will help you in learning a foreign language. Increase your vocabulary</p>

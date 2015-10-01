@@ -1,5 +1,6 @@
 require('angular');
 require('angular-route');
+require('extends-ng-model');
 
 var MyApp = angular.module('MyApp', ['ngRoute']);
 
@@ -48,7 +49,11 @@ MyApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: 'app/views/edit.html',
 		controller: 'editController'
 	})
-	
+	.when('/register', {
+
+		templateUrl: 'app/views/login.html',
+		controller: 'loginController'
+	})
 }])
 
 
